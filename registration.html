@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>registration form</title>
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script href="action.js"></script>
+
+    <!--
+    
+    there are two php files
+    -test_server2.php
+    -server.php
+    
+    NOTE: the first is for test pupose not the following
+    *enter name as pass to get positive responce
+    *otherwise the negetive responce
+
+    -->
+
+
+</head>
+
+<body>
+    <form action="test_server2.php" method="post">
+        <div class="container">
+            <div class="time">time</div>
+            <div id="title-div">
+
+                WELLCOME TO REGISTRATION
+            </div>
+
+            <div class="detail-card">
+                <div class="sub1">
+                    <div>
+                        <label for="n">STUDENT NAME:</label></br>
+                        <label for="p">STUSENT PIN NO:</label>
+                    </div>
+                    <div>
+
+                        <input type="text" id="n" name="name" placeholder="name"></br>
+                        <input type="number" id="p" name="pin" placeholder="262">
+                    </div>
+
+                </div>
+
+
+                <div class="sub2">
+                    <button class="submit-btn" type="submit">submit</button>
+                    <button class="reset-btn" type="reset">reset</button>
+                </div>
+            </div>
+            <div id="feedback"></div>
+        </div>
+    </form>
+    <footer>
+        <div class="footer-links">
+            <a href="https://github.com/savioseelam310-prog" target="_blank" title="GitHub">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub</span>
+            </a>
+            <a href="https://www.instagram.com/s_a_v_i_o_7121/" target="_blank" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+            <a href="https://discord.com/channels/@me" target="_blank" title="Discord">
+                <i class="fa-brands fa-discord"></i>
+                <span>Discord</span>
+            </a>
+        </div>
+        <div class="copyright">
+            &copy; 2026 Student Registration Portal. Developed by Savio.
+        </div>
+    </footer>
+    <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const status = urlParams.get('status');
+        const errorDiv = document.getElementById('feedback');
+
+        if (status === 'failure') {
+            errorDiv.textContent = 'Invalid studentname name or pin';
+            errorDiv.style.color = 'rgb(200,0,0)';
+
+        } else if (status === 'success') {
+            errorDiv.textContent = 'Sucessfully registered!!';
+            errorDiv.style.color = 'rgb(0,0,233)';
+
+        }
+
+        // Update time dynamically
+        function updateTime() {
+            const timeDiv = document.querySelector('.time');
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            timeDiv.textContent = timeString;
+        }
+
+        // Initialize time and set interval for updates
+        updateTime();
+        setInterval(updateTime, 1000);
+
+    </script>
+</body>
+
+</html>
